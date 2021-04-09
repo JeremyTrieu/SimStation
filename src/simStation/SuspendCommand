@@ -1,0 +1,21 @@
+package simstation;
+
+import mvc.*;
+
+public class SuspendCommand extends Command
+{
+	public SuspendCommand(Model model)
+	{
+		super(model);
+	}
+	
+	public void execute()
+	{
+		List<Agent> agents = model.getAgents();
+		for (Agent a : agents)
+		{
+			a.state = AgentState.SUSPENDED;
+		}
+		model.suspend();
+	}
+}
