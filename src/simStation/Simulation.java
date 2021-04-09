@@ -7,7 +7,7 @@ public class Simulation extends Model {
   List<Agent> agents;
   public Simulation() {
     clock = 0;
-    agents = new List<Agent>();
+    agents = new LinkedList<Agent>();
   }
 
   private void startTimer() {
