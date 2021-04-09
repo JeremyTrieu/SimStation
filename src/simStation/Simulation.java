@@ -7,9 +7,7 @@ public class Simulation extends Model {
   List<Agent> agents;
   public Simulation() {
     clock = 0;
-    for (int i = 0; i < agents.size(); i++) {
-      agents.get(i) = new Agent();
-    }
+    agents = new List<Agent>();
   }
 
   private void startTimer() {
