@@ -1,0 +1,21 @@
+package simstation;
+
+import mvc.*;
+
+public class StopCommand extends Command 
+{
+	public StopCommand(Model model)
+	{
+		super(model);
+	}
+	
+	public void execute()
+	{
+		List<Agent> agents = model.getAgents();
+		for (Agent a : agents)
+		{
+			a.state = AgentState.STOPPED;
+		}
+		model.stop();
+	}
+}
