@@ -11,11 +11,12 @@ public class SuspendCommand extends Command
 	
 	public void execute()
 	{
-		List<Agent> agents = model.getAgents();
+		Simulation s = (Simulation) this.model;
+		List<Agent> agents = s.getAgents();
 		for (Agent a : agents)
 		{
 			a.state = AgentState.SUSPENDED;
 		}
-		model.suspend();
+		s.suspend();
 	}
 }
