@@ -11,6 +11,11 @@ public class SimStationFactory implements AppFactory
 		return new SimStationView( (Simulation) m);
 	}
 	
+	public String getTitle()
+	{
+		return "SimStation";
+	}
+	
 	public String[] getEditCommands()
 	{
 		return new String[] {"Start", "Suspend", "Stop", "Resume", "Stats"};
@@ -43,10 +48,10 @@ public class SimStationFactory implements AppFactory
 		return new String[] {"Click Start to begin the simulation."
 				+ "Suspend will pause the simulation and resume will continue the simultion."
 				+ "Click Stop the end the simulation."};
-		}
 	}
 
 	public String about()
 	{
 		return "SimStation by Team 8: Jeremy Trieu, Vlad Makarenko, Veronica Hu";
+	}
 }
