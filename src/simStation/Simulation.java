@@ -1,4 +1,4 @@
-package simulation;
+package simStation;
 import java.util.*;
 import mvc.*;
 public class Simulation extends Model {
@@ -13,7 +13,7 @@ public class Simulation extends Model {
   }
 
   private void startTimer() {
-	   timer = new Timer();
+	 timer = new Timer();
      timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
   }
 
@@ -62,7 +62,12 @@ public class Simulation extends Model {
     }
     return flagAgent;
   }
-  public void populate() {
+
+    public List<Agent> getAgents() {
+        return agents;
+    }
+
+    public void populate() {
 
   }
 }
