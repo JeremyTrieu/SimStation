@@ -1,4 +1,4 @@
-package simstation;
+package simStation;
 
 import mvc.*;
 
@@ -8,9 +8,14 @@ public class SimStationFactory implements AppFactory
 	
 	public View makeView(Model m) 
 	{
-		return new SimStationView( (Simulation) m);
+		return new SimView( (Simulation) m);
 	}
-	
+
+	@Override
+	public String getTitle() {
+		return null;
+	}
+
 	public String[] getEditCommands()
 	{
 		return new String[] {"Start", "Suspend", "Stop", "Resume", "Stats"};
@@ -43,10 +48,10 @@ public class SimStationFactory implements AppFactory
 		return new String[] {"Click Start to begin the simulation."
 				+ "Suspend will pause the simulation and resume will continue the simultion."
 				+ "Click Stop the end the simulation."};
-		}
 	}
 
 	public String about()
 	{
 		return "SimStation by Team 8: Jeremy Trieu, Vlad Makarenko, Veronica Hu";
+}
 }

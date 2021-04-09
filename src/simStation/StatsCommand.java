@@ -1,7 +1,6 @@
-package simstation;
+package simStation;
 
 import mvc.*;
-import tools.Utilities;
 
 public class StatsCommand extends Command 
 {
