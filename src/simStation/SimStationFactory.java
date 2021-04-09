@@ -1,4 +1,4 @@
-package simstation;
+package simStation;
 
 import mvc.*;
 
