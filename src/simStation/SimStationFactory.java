@@ -1,4 +1,4 @@
-package simstation;
+package simStation;
 
 import mvc.*;
 
@@ -8,7 +8,7 @@ public class SimStationFactory implements AppFactory
 	
 	public View makeView(Model m) 
 	{
-		return new SimStationView( (Simulation) m);
+		return new SimView ( (Simulation) m);
 	}
 	
 	public String getTitle()
