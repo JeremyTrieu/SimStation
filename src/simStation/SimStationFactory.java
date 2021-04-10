@@ -8,12 +8,12 @@ public class SimStationFactory implements AppFactory
 	
 	public View makeView(Model m) 
 	{
-		return new SimView( (Simulation) m);
+		return new SimView ( (Simulation) m);
 	}
 
-	@Override
-	public String getTitle() {
-		return null;
+	public String getTitle()
+	{
+		return "SimStation";
 	}
 
 	public String[] getEditCommands()
@@ -23,24 +23,7 @@ public class SimStationFactory implements AppFactory
 	
 	public Command makeEditCommand(Model model, String type)
 	{
-		if (type == "Start")
-		{
-			return new StartCommand(model);
-		} else if (type == "Suspend")
-		{
-			return new SuspendCommand(model);
-		} else if (type == "Stop") 
-		{
-			return new StopCommand(model);
-		} else if (type == "Resume")
-		{
-			return new ResumeCommand(model);
-		} else if (type == "Stats")
-		{
-			return new StatsCommand(model);
-		}
-		
-		return null;
+		return new ControlCommand(model, type);
 	}
 	
 	public String[] getHelp()
@@ -53,5 +36,5 @@ public class SimStationFactory implements AppFactory
 	public String about()
 	{
 		return "SimStation by Team 8: Jeremy Trieu, Vlad Makarenko, Veronica Hu";
-}
+	}
 }

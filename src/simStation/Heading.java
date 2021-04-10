@@ -1,6 +1,7 @@
 package simStation;
 
-public class Heading {
+public class Heading
+{
     int angle;
     public Heading(int angle ) {
         this.angle = angle;

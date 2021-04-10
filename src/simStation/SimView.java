@@ -29,7 +29,7 @@ public class SimView extends View {
                 0,
                 currentDisplayWidth,
                 currentDisplayHeight);
-        for ( Agent a : agents ) {
+        for (Agent a : agents) {
 //            g2d.setColor(countToColor.get(minecounts[iy][ix]));  //
 //            g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
 //                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
