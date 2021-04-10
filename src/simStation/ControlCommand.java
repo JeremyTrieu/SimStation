@@ -1,7 +1,6 @@
 package simStation;
 
 import mvc.*;
-import tools.Utilities;
 
 public class ControlCommand extends Command 
 {
