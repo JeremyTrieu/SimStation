@@ -8,6 +8,9 @@ public class Agent extends Bean implements Runnable, Serializable {
   protected int yc;
   protected AgentState state;
   protected Thread thread;
+  protected boolean stopped;
+  protected boolean suspend;
+
 
   public Agent(String name, Heading heading, int xc, int yc, Simulation world) {
     this.name = name;
