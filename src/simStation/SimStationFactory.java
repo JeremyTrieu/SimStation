@@ -29,8 +29,8 @@ public class SimStationFactory implements AppFactory
 	public String[] getHelp()
 	{
 		return new String[] {"Click Start to begin the simulation."
-				+ "Suspend will pause the simulation and resume will continue the simultion."
-				+ "Click Stop the end the simulation."};
+				+ "\nSuspend will pause the simulation and resume will continue the simulation."
+				+ "\nClick Stop the end the simulation."};
 	}
 
 	public String about()
