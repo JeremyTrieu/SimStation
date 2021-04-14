@@ -1,31 +1,35 @@
 package simStation;
 
+import static java.lang.Thread.sleep;
+
 public class Agent implements Runnable {
-    int x;
-    int y;
+    protected int x;
+    protected int y;
     boolean stopped=false;
     boolean suspended=false;
     String name;
-    Heading heading;
+    protected Simulation sim;
+    protected Heading heading;
     Thread myThread;
-    public Agent(int x, int y, String name, Heading heading) {
+    public Agent(int x, int y, String name, Heading heading, Simulation sim) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.heading = heading;
+        this.sim = sim;
     }
 
     @Override
     public void run() {
         while ( !stopped ) {
-            if( suspended ) {
-                try {
+            try {
+                if( suspended )
                     wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                update();
+                sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            update();
         }
     }
 
@@ -40,15 +44,18 @@ public class Agent implements Runnable {
 
     public void resume() {
         suspended = false;
+        notify();
     }
 
     public void stop() {
         stopped = true;
     }
 
-    private void update() {}
+    protected void update() {
 
-    private void move(int steps) {
+    }
+
+    protected void move(int steps) {
         x += (int)(steps * heading.getXPart());
         y += (int)(steps * heading.getYPart());
     }

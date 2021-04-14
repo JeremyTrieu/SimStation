@@ -13,12 +13,13 @@ public class BoidsSim extends Simulation {
   }
 
   public void populate() {
-    for( int x=0; x<20; x++ )
+    for( int x=0; x<40; x++ )
       agents.add( new Boid(
-          (int)(Math.random()*400),
-          (int)(Math.random()*400),
+          (int)(Math.random()*width),
+          (int)(Math.random()*height),
           "" + hashCode(),
-          new Heading((int)(Math.random()*360))
+          new Heading((int)(Math.random()*360)),
+          this
         ));
   }
 }

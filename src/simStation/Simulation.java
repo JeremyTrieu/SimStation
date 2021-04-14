@@ -4,6 +4,8 @@ import mvc.*;
 
 
 public class Simulation extends Model {
+  protected int width=1000;
+  protected int height=1000;
   private Timer timer;
   int clock;
   protected List<Agent> agents;
@@ -14,7 +16,7 @@ public class Simulation extends Model {
 
   private void startTimer() {
 	   timer = new Timer();
-     timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
+     timer.scheduleAtFixedRate(new ClockUpdater(), 10, 10);
   }
 
   private void stopTimer() {
@@ -26,36 +28,46 @@ public class Simulation extends Model {
       return clock;
     }
 
+  public List<Agent> getAgents() {
+    return agents;
+  }
+
     private class ClockUpdater extends TimerTask {
       public void run() {
         clock++;
-        //changed();
+        changed();
       }
     }
 
 
   public void start() {
-    for(int i = 0; i < agents.size(); i++) {
-        agents.get(i).start();
+    populate();
+    startTimer();
+    for( Agent a : agents ) {
+        a.start();
      }
   }
   public void suspend() {
-    for(int i = 0; i < agents.size(); i++) {
-        agents.get(i).suspend();
+    stopTimer();
+    for( Agent a : agents ) {
+        a.suspend();
      }
   }
   public void resume() {
-    for(int i = 0; i < agents.size(); i++) {
-        agents.get(i).resume();
+    startTimer();
+    for(Agent a : agents) {
+        a.resume();
     }
   }
   public void stop() {
-    for(int i = 0; i < agents.size(); i++) {
-        agents.get(i).stop();
+    stopTimer();
+    for(Agent a : agents) {
+        a.stop();
     }
   }
-  public Agent getNeighbor(Agent a) {
-    Agent flagAgent = null;
+  public synchronized Agent getNeighbor(Agent a, int range) {
+    Agent flagAgent;
+    ArrayList<Agent> inRange = new ArrayList<Agent>();
     int ay = a.getY();
     int ax = a.getX();
     double dist = Math.sqrt((ay - agents.get(0).getY())*(ay - agents.get(0).getY()) +(ax - agents.get(0).getX())*(ax - agents.get(0).getX()));
@@ -65,12 +77,25 @@ public class Simulation extends Model {
       double newDist = Math.sqrt(Math.pow(ay - iay, 2) + Math.pow(ax - iax, 2));
       if ( newDist < dist && agents.get(i)!=a ) {
         dist = newDist;
-        flagAgent = agents.get(i);
+        inRange.add(agents.get(i));
       }
     }
+    if (inRange.isEmpty())
+      flagAgent = agents.get((int)(Math.random()*(agents.size()-1)));
+    else
+      flagAgent = inRange.get((int)(Math.random()*(inRange.size()-1)));
     return flagAgent;
   }
   public void populate() {
 
   }
+  public int getWidth() {
+    return width;
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
 }
+

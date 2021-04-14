@@ -20,5 +20,4 @@ public class SimPanel extends AppPanel {
         AppPanel panel = new SimPanel(factory);
         panel.display();
     }
-
 }
