@@ -9,11 +9,11 @@ public class Simulation extends Model {
   protected List<Agent> agents;
   public Simulation() {
     clock = 0;
-    agents = new ArrayList<Agent>();
+    agents = new LinkedList<Agent>();
   }
 
   private void startTimer() {
-	 timer = new Timer();
+	   timer = new Timer();
      timer.scheduleAtFixedRate(new ClockUpdater(), 1000, 1000);
   }
 
@@ -59,7 +59,7 @@ public class Simulation extends Model {
     int ay = a.getY();
     int ax = a.getX();
     double dist = Math.sqrt((ay - agents.get(0).getY())*(ay - agents.get(0).getY()) +(ax - agents.get(0).getX())*(ax - agents.get(0).getX()));
-    for (int i = 0; i < agents.size(); i++) {   
+    for (int i = 0; i < agents.size(); i++) {
       int iay =  agents.get(i).getY();
       int iax =  agents.get(i).getX();
       double newDist = Math.sqrt(Math.pow(ay - iay, 2) + Math.pow(ax - iax, 2));
@@ -70,12 +70,7 @@ public class Simulation extends Model {
     }
     return flagAgent;
   }
-
-    public List<Agent> getAgents() {
-        return agents;
-    }
-
-    public void populate() {
+  public void populate() {
 
   }
 }
