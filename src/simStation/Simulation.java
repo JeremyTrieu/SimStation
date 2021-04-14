@@ -6,7 +6,7 @@ import mvc.*;
 public class Simulation extends Model {
   private Timer timer;
   int clock;
-  List<Agent> agents;
+  protected List<Agent> agents;
   public Simulation() {
     clock = 0;
     agents = new ArrayList<Agent>();
@@ -22,16 +22,16 @@ public class Simulation extends Model {
 	  timer.purge();
   }
 
-    public int getClock() {
+  public int getClock() {
       return clock;
     }
 
     private class ClockUpdater extends TimerTask {
-   public void run() {
-     clock++;
-     //changed();
-   }
- }
+      public void run() {
+        clock++;
+        //changed();
+      }
+    }
 
 
   public void start() {

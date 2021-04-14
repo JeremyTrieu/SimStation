@@ -9,10 +9,10 @@ public class Heading
     public double getXPart() {
         return Math.cos(angle);
     }
-
     public double getYPart() {
         return Math.sin(angle);
     }
-
-//    public
+    public void turn(int dAngle) {
+        angle += dAngle;
+    }
 }

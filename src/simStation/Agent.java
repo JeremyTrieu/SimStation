@@ -3,35 +3,54 @@ package simStation;
 public class Agent implements Runnable {
     int x;
     int y;
+    boolean stopped=false;
+    boolean suspended=false;
     String name;
     Heading heading;
-    AppState state;
+    Thread myThread;
     public Agent(int x, int y, String name, Heading heading) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.heading = heading;
-        this.state = AppState.READY;
     }
 
     @Override
     public void run() {
+        while ( !stopped ) {
+            if( suspended ) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            update();
+        }
     }
 
     public void start() {
-        this.state = AppState.RUNNING;
+        myThread = new Thread(this);
+        myThread.start();
     }
 
     public void suspend() {
-        this.state = AppState.SUSPENDED;
+        suspended = true;
     }
 
     public void resume() {
-        this.state = AppState.RUNNING;
+        suspended = false;
     }
 
     public void stop() {
-        this.state = AppState.STOPPED;
+        stopped = true;
+    }
+
+    private void update() {}
+
+    private void move(int steps) {
+        x += (int)(steps * heading.getXPart());
+        y += (int)(steps * heading.getYPart());
     }
 
     public int getY() {
@@ -40,5 +59,9 @@ public class Agent implements Runnable {
 
     public int getX() {
         return x;
+    }
+
+    public Heading getHeading() {
+        return heading;
     }
 }
