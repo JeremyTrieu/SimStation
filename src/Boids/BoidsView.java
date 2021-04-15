@@ -38,8 +38,11 @@ public class BoidsView extends View {
           0,
           currentDisplayWidth,
           currentDisplayHeight);
+        float hue = (float)(147/360.0);
         for (Boid a : boids) {
-            g2d.setColor(new Color(50, 200, 100));  //
+            float saturation = (float) (a.getSpeed() / Boid.MAXSPEED);
+            float value = (float) ((a.getSpeed() / Boid.MAXSPEED));
+            g2d.setColor(Color.getHSBColor(hue, saturation, value));
             g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
               RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             int x = (int)(a.getX()*widthScale);
@@ -47,10 +50,10 @@ public class BoidsView extends View {
 
             int x1 = x + (int)(5*a.getXPart());
             int y1 = y + (int)(5*a.getYPart());
-            int x2 = x - (int)(5*a.getXPart()-0.6);
-            int y2 = y - (int)(5*a.getYPart()-0.6);
-            int x3 = x - (int)(5*a.getXPart()+0.6);
-            int y3 = y - (int)(5*a.getYPart()+0.6);
+            int x2 = x - (int)(5*(a.getXPart()-0.6));
+            int y2 = y - (int)(5*(a.getYPart()-0.6));
+            int x3 = x - (int)(5*(a.getXPart()+0.6));
+            int y3 = y - (int)(5*(a.getYPart()+0.6));
             g2d.drawPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
 //            g2d.drawString(n,
 //                    Math.round(ix * tileSize),
@@ -60,4 +63,5 @@ public class BoidsView extends View {
         }
     }
 }
+
 

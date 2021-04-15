@@ -7,6 +7,8 @@ import simStation.Simulation;
 public class Boid extends Agent {
     double x, y;  // so that speed < 1.0 doesn't get lost
     double speed, angle;
+    static double MAXSPEED = 10;
+    double ANGLEDIFF = 0.0005;
     public Boid(int x, int y, String name, Heading heading, Simulation sim, double speed, double angle) {
         super(x, y, name, heading, sim);
         this.x = x;
@@ -18,8 +20,8 @@ public class Boid extends Agent {
     protected void update() {
         Boid n = (Boid) world.getNeighbor(this, 50);
         speed = speed*0.8 + n.speed*0.2;
-        speed = Math.max(2, Math.min(speed + Math.random()-0.5, 10));
-        updateAngle(0.0005 * getDiff(n.getAngle()));
+        speed = Math.max(2, Math.min(speed + Math.random()-0.5, MAXSPEED));
+        updateAngle(ANGLEDIFF * getDiff(n.getAngle()));
         move(speed);
     }
 
@@ -64,5 +66,9 @@ public class Boid extends Agent {
     }
     public double getAngle() {
         return angle;
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 }
