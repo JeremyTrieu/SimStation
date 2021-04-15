@@ -21,7 +21,6 @@ public class Agent implements Runnable {
 
     @Override
     public void run() {
-        thread = Thread.currentThread();
         while ( !stopped ) {
             try {
                 if(suspend)
@@ -35,6 +34,7 @@ public class Agent implements Runnable {
     }
 
     public void start() {
+        thread = new Thread(this);
         thread.start();
     }
 

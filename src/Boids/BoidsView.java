@@ -6,6 +6,7 @@ import simStation.Heading;
 import simStation.Simulation;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +19,10 @@ public class BoidsView extends View {
     public void paintComponent(Graphics gc) {
         super.paintComponent(gc);
         Simulation sim = (Simulation) model;
-        List<Boid> agents = Collections.singletonList((Boid) sim.getAgents());
+        List<Agent> agents = sim.getAgents();
+        List<Boid> boids = new ArrayList<Boid>();
+        for( Agent a: agents )
+            boids.add((Boid)a);
         int mapWidth = sim.getWidth();
         int mapHeight = sim.getHeight();
         Graphics2D g2d = (Graphics2D) gc;
@@ -34,7 +38,7 @@ public class BoidsView extends View {
           0,
           currentDisplayWidth,
           currentDisplayHeight);
-        for (Boid a : agents) {
+        for (Boid a : boids) {
             g2d.setColor(new Color(50, 200, 100));  //
             g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
               RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
