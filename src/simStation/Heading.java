@@ -1,33 +1,35 @@
 package simStation;
 
-public class Heading
+import mvc.Utilities;
+
+public enum Heading
 {
-    double angle;
-    public Heading(int angle ) {
-        this.angle = angle;
+    NORTH, EAST, SOUTH, WEST;
+
+    public static Heading random() {
+        int h = Utilities.rng.nextInt(4);
+        if( h==0 ) return NORTH;
+        if( h==1 ) return EAST;
+        if( h==2 ) return SOUTH;
+        if( h==3 ) return WEST;
+        return null;
     }
-    public double getXPart() {
-        return Math.cos(angle);
+
+    public static Heading parse(String str) {
+        if( str.equalsIgnoreCase("north") ) return NORTH;
+        if( str.equalsIgnoreCase("east") )  return EAST;
+        if( str.equalsIgnoreCase("south") ) return SOUTH;
+        if( str.equalsIgnoreCase("west") )  return WEST;
+        Utilities.error("invalid heading " + str);
+        return null;
     }
-    public double getYPart() {
-        return Math.sin(angle);
-    }
-    public void updateAngle(double dAngle) {
-        angle += dAngle;
-        if(angle < 0)
-            angle+=360;
-        if(angle > 360)
-            angle-=360;
-    }
-    public double getDiff(double pangle) {
-        double diff = angle - pangle;
-        if(diff < -180)
-            diff+=360;
-        if(diff > 180)
-            diff-=360;
-        return diff;
-    }
-    public double getAngle() {
-        return angle;
+
+    public static int[] diff(Heading h) {
+        if( h==NORTH ) return new int[] {0, -1};
+        if( h==EAST )  return new int[] {1, 0};
+        if( h==SOUTH ) return new int[] {0, 1};
+        if( h==WEST )  return new int[] {-1, 0};
+        Utilities.error("invalid heading");
+        return null;
     }
 }

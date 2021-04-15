@@ -5,45 +5,45 @@ import static java.lang.Thread.sleep;
 public class Agent implements Runnable {
     protected int x;
     protected int y;
-    boolean stopped=false;
-    boolean suspended=false;
+    boolean stopped = false;
+    boolean suspend = false;
     String name;
-    protected Simulation sim;
+    protected Simulation world;
     protected Heading heading;
-    Thread myThread;
+    Thread thread;
     public Agent(int x, int y, String name, Heading heading, Simulation sim) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.heading = heading;
-        this.sim = sim;
+        this.world = sim;
     }
 
     @Override
     public void run() {
+        thread = Thread.currentThread();
         while ( !stopped ) {
             try {
-                if( suspended )
+                if(suspend)
                     wait();
-                update();
                 sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            update();
         }
     }
 
     public void start() {
-        myThread = new Thread(this);
-        myThread.start();
+        thread.start();
     }
 
     public void suspend() {
-        suspended = true;
+        suspend = true;
     }
 
     public void resume() {
-        suspended = false;
+        suspend = false;
         notify();
     }
 
@@ -51,13 +51,12 @@ public class Agent implements Runnable {
         stopped = true;
     }
 
-    protected void update() {
+    protected void update() {    }
 
-    }
-
-    protected void move(int steps) {
-        x += (int)(steps * heading.getXPart());
-        y += (int)(steps * heading.getYPart());
+    public void move(int steps) {
+        int[] diff = Heading.diff(heading);
+        this.x += diff[0] * steps;
+        this.y += diff[1] * steps;
     }
 
     public int getY() {
@@ -70,5 +69,13 @@ public class Agent implements Runnable {
 
     public Heading getHeading() {
         return heading;
+    }
+
+    public void setHeading(Heading heading) {
+        this.heading = heading;
+    }
+
+    public String getName() {
+        return name;
     }
 }
