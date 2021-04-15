@@ -23,8 +23,10 @@ public class Agent implements Runnable {
     public void run() {
         while ( !stopped ) {
             try {
-                if(suspend)
-                    wait();
+                if(suspend) {
+                    sleep(20);
+                    continue;
+                }
                 sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -44,7 +46,6 @@ public class Agent implements Runnable {
 
     public void resume() {
         suspend = false;
-        notify();
     }
 
     public void stop() {

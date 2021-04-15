@@ -65,7 +65,7 @@ public class Simulation extends Model {
             a.stop();
         }
     }
-    public synchronized Agent getNeighbor(Agent a, int range) {
+    public Agent getNeighbor(Agent a, int range) {
         Agent flagAgent;
         ArrayList<Agent> inRange = new ArrayList<Agent>();
         int ay = a.getY();

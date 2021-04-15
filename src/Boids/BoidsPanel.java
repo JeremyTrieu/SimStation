@@ -7,13 +7,13 @@ import javax.swing.*;
 
 
 public class BoidsPanel extends AppPanel {
-    private JButton change;
+//    private JButton change;
     public BoidsPanel(AppFactory factory) {
         super(factory);
 //        change = new JButton("Change");
-        change = new JButton("Start");
-        change.addActionListener(this);
-        controlPanel.add(change);
+//        change = new JButton("Start");
+//        change.addActionListener(this);
+//        controlPanel.add(change);
         //add(buttonPanel);
         //add(view);
     }
