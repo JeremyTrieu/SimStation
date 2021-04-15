@@ -2,11 +2,12 @@ package Boids;
 
 import mvc.AppFactory;
 import mvc.AppPanel;
+import simStation.SimPanel;
 
 import javax.swing.*;
 
 
-public class BoidsPanel extends AppPanel {
+public class BoidsPanel extends SimPanel {
 //    private JButton change;
     public BoidsPanel(AppFactory factory) {
         super(factory);
