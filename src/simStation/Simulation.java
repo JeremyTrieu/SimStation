@@ -42,6 +42,7 @@ public class Simulation extends Model
 
 
     public void start() {
+        agents = new LinkedList<Agent>();
         populate();
         startTimer();
         for( Agent a : agents ) {
