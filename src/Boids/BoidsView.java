@@ -38,8 +38,8 @@ public class BoidsView extends View {
           0,
           currentDisplayWidth,
           currentDisplayHeight);
-        float hue = (float)(147/360.0);
         for (Boid a : boids) {
+            float hue = (float)((134 + a.getSpeed()*2)/360.0);
             float saturation = (float) (a.getSpeed() / Boid.MAXSPEED);
             float value = (float) ((a.getSpeed() / Boid.MAXSPEED));
             g2d.setColor(Color.getHSBColor(hue, saturation, value));
@@ -54,7 +54,7 @@ public class BoidsView extends View {
             int y2 = y - (int)(5*(a.getYPart()-0.6));
             int x3 = x - (int)(5*(a.getXPart()+0.6));
             int y3 = y - (int)(5*(a.getYPart()+0.6));
-            g2d.drawPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
+            g2d.fillPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
 //            g2d.drawString(n,
 //                    Math.round(ix * tileSize),
 //                    Math.round(iy * tileSize) + tileSize
