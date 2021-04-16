@@ -1,37 +1,63 @@
 package simStation;
 
+import static java.lang.Thread.sleep;
+
 public class Agent implements Runnable {
-    int x;
-    int y;
+    protected int x;
+    protected int y;
+    boolean stopped = false;
+    boolean suspend = false;
     String name;
-    Heading heading;
-    AppState state;
-    public Agent(int x, int y, String name, Heading heading) {
+    protected Simulation world;
+    protected Heading heading;
+    Thread thread;
+    public Agent(int x, int y, String name, Heading heading, Simulation sim) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.heading = heading;
-        this.state = AppState.READY;
+        this.world = sim;
     }
 
     @Override
     public void run() {
+        while ( !stopped ) {
+            try {
+                if(suspend) {
+                    sleep(20);
+                    continue;
+                }
+                sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            update();
+        }
     }
 
     public void start() {
-        this.state = AppState.RUNNING;
+        thread = new Thread(this);
+        thread.start();
     }
 
     public void suspend() {
-        this.state = AppState.SUSPENDED;
+        suspend = true;
     }
 
     public void resume() {
-        this.state = AppState.RUNNING;
+        suspend = false;
     }
 
     public void stop() {
-        this.state = AppState.STOPPED;
+        stopped = true;
+    }
+
+    protected void update() {    }
+
+    public void move(int steps) {
+        int[] diff = Heading.diff(heading);
+        this.x += diff[0] * steps;
+        this.y += diff[1] * steps;
     }
 
     public int getY() {
@@ -40,5 +66,17 @@ public class Agent implements Runnable {
 
     public int getX() {
         return x;
+    }
+
+    public Heading getHeading() {
+        return heading;
+    }
+
+    public void setHeading(Heading heading) {
+        this.heading = heading;
+    }
+
+    public String getName() {
+        return name;
     }
 }

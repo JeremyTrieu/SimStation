@@ -21,7 +21,7 @@ public class SimView extends View {
         Graphics2D g2d = (Graphics2D) gc;
         int currentDisplayHeight = this.getHeight();
         int currentDisplayWidth = this.getWidth();
-//        g2d.setFont(new Font("DialogInput", Font.PLAIN, (int) tileSize));
+
         // Background
         g2d.setColor(new Color(50, 50, 50));
         g2d.fillRect(
@@ -30,15 +30,10 @@ public class SimView extends View {
                 currentDisplayWidth,
                 currentDisplayHeight);
         for (Agent a : agents) {
-//            g2d.setColor(countToColor.get(minecounts[iy][ix]));  //
-//            g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-//                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-//            String n = (minecounts[iy][ix] == 8) ? "?" : String.valueOf(minecounts[iy][ix]);
-//            g2d.drawString(n,
-//                    Math.round(ix * tileSize),
-//                    Math.round(iy * tileSize) + tileSize
-//            );
-//            }
+            g2d.setColor(new Color(50, 200, 100));  //
+            g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            g2d.fillOval(a.getX(), a.getY(), 5, 5);
         }
     }
 }
