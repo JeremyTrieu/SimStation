@@ -31,12 +31,12 @@ public class SimView extends View {
                 0,
                 currentDisplayWidth,
                 currentDisplayHeight);
+        g2d.setColor(new Color(50, 200, 100));  //
         for (Agent a : agents) {
-            g2d.setColor(new Color(50, 200, 100));  //
             g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                     RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             // use pixels as (x, y)? or specify map size in the simulation?
-            g2d.fillOval(
+            g2d.fillRect(
                 (int)(a.getX()*widthScale),
                 (int)(a.getY()*heightScale),
                 (int)(2*widthScale),

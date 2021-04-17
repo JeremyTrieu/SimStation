@@ -3,6 +3,7 @@ package Boids;
 import mvc.AppFactory;
 import mvc.Model;
 import simStation.Agent;
+import simStation.Heading;
 import simStation.Simulation;
 
 
@@ -17,7 +18,7 @@ public class BoidsSim extends Simulation {
           (int)(Math.random()*width),
           (int)(Math.random()*height),
           "" + hashCode(),
-          null,
+          Heading.random(),
           this,
           Math.random()*5,
           Math.random()*360

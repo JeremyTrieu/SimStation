@@ -1,15 +1,15 @@
-package Mocking;
+package Flocking;
 import mvc.Utilities;
-import simulation.*;
-import java.util.*;
+import simStation.Agent;
+import simStation.Heading;
+import simStation.Simulation;
+
 
 public class Bird extends Agent {
   protected int speed;
-  public Bird() {
-    super();
-    heading = Heading.random();
-    Random random = new Random();
-    speed = random.nextInt(5);
+  public Bird(int x, int y, String name, Heading heading, Simulation sim) {
+    super(x, y, name, heading, sim);
+    speed = Utilities.rng.nextInt(5);
   }
   public int getSpeed() {
     return speed;
@@ -19,7 +19,8 @@ public class Bird extends Agent {
   }
   public void update() {
     Bird neighbor = (Bird) this.world.getNeighbor(this,10);
-    this.setDirection(neighbor.getDirection());
+//    this.setDirection(neighbor.getDirection());
+    heading = Heading.random();
     this.setSpeed(neighbor.getSpeed());
     int steps = this.getSpeed();
     move(steps);

@@ -1,11 +1,12 @@
 package randomWalk;
 import mvc.Utilities;
-import simulation.*;
+import simStation.Agent;
+import simStation.Heading;
+import simStation.Simulation;
 
 public class Drunk extends Agent {
-  public Drunk() {
-    super();
-    heading = Heading.random();
+  public Drunk(int x, int y, String name, Heading heading, Simulation sim) {
+    super(x, y, name, heading, sim);
   }
 
   public void update() {

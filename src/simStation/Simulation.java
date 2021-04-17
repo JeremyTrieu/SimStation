@@ -63,7 +63,14 @@ public class Simulation extends Model {
         stopTimer();
         for(Agent a : agents) {
             a.stop();
+            try {
+                a.thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        agents = new LinkedList<Agent>();
+        changed();
     }
     public Agent getNeighbor(Agent a, int range) {
         Agent flagAgent;
