@@ -4,8 +4,6 @@ import mvc.*;
 
 
 public class Simulation extends Model {
-    protected int width=1000;
-    protected int height=1000;
     private Timer timer;
     int clock;
     protected List<Agent> agents;
@@ -96,13 +94,5 @@ public class Simulation extends Model {
     public void populate() {
 
     }
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
 }
 

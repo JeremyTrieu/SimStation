@@ -16,8 +16,8 @@ public class RandomWalkSimulation extends Simulation {
   public void populate() {
     for(int i = 0; i < 15; i++)
       agents.add(new Drunk(
-          (int)(Math.random()*width),
-          (int)(Math.random()*height),
+          (int)(Math.random()*AppPanel.FRAME_WIDTH),
+          (int)(Math.random()*AppPanel.FRAME_HEIGHT),
           "" + hashCode(),
           Heading.random(),
           this

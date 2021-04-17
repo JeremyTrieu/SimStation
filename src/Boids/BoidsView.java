@@ -1,5 +1,6 @@
 package Boids;
 
+import mvc.AppPanel;
 import mvc.View;
 import simStation.Agent;
 import simStation.Heading;
@@ -23,8 +24,8 @@ public class BoidsView extends View {
         List<Boid> boids = new ArrayList<Boid>();
         for( Agent a: agents )
             boids.add((Boid)a);
-        int mapWidth = sim.getWidth();
-        int mapHeight = sim.getHeight();
+        int mapWidth = AppPanel.FRAME_WIDTH;
+        int mapHeight = AppPanel.FRAME_HEIGHT;
         Graphics2D g2d = (Graphics2D) gc;
         int currentDisplayHeight = this.getHeight();
         int currentDisplayWidth = this.getWidth();

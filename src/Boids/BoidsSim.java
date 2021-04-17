@@ -1,6 +1,7 @@
 package Boids;
 
 import mvc.AppFactory;
+import mvc.AppPanel;
 import mvc.Model;
 import simStation.Agent;
 import simStation.Heading;
@@ -15,12 +16,12 @@ public class BoidsSim extends Simulation {
   public void populate() {
     for( int x=0; x<40; x++ )
       agents.add( new Boid(
-          (int)(Math.random()*width),
-          (int)(Math.random()*height),
+          (int)(Math.random() * AppPanel.FRAME_WIDTH),
+          (int)(Math.random() * AppPanel.FRAME_HEIGHT),
           "" + hashCode(),
           Heading.random(),
           this,
-          Math.random()*5,
+          Math.random()*3,
           Math.random()*360
         ));
   }
