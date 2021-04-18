@@ -4,8 +4,6 @@ import mvc.AppFactory;
 import mvc.AppPanel;
 import simStation.SimPanel;
 
-import javax.swing.*;
-
 
 public class BoidsPanel extends SimPanel {
     public BoidsPanel(AppFactory factory) {

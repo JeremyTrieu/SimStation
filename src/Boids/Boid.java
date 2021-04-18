@@ -21,7 +21,7 @@ public class Boid extends Agent {
 
     protected void update() {
         Boid n = (Boid) world.getNeighbor(this, 50);
-        speed = speed*0.8 + n.speed*0.2;
+        speed = speed*0.5 + n.speed*0.5;
         speed = Math.max(MINSPEED, Math.min(speed + Math.random()-0.5, MAXSPEED));
         updateAngle(ANGLEDIFF * getDiff(n.getAngle()));
         move(speed);
