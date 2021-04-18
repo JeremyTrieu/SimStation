@@ -29,8 +29,7 @@ public class ControlCommand extends Command
           s.resume();
         } else if (command == "Stats")
         {
-            Utilities.inform("#agents = " + s.getAgents().size()
-            + "\nclock = " + s.getClock());
+            s.stats();
         } else {
             Utilities.inform("Invalid Command");
         }

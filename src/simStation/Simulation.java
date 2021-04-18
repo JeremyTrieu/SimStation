@@ -70,6 +70,10 @@ public class Simulation extends Model {
         agents = new LinkedList<Agent>();
         changed();
     }
+    public void stats() {
+        Utilities.inform("#agents = " + getAgents().size()
+            + "\nclock = " + getClock());
+    }
     public Agent getNeighbor(Agent a, int range) {
         Agent flagAgent;
         ArrayList<Agent> inRange = new ArrayList<Agent>();
