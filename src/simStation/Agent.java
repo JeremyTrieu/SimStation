@@ -1,5 +1,7 @@
 package simStation;
 
+import mvc.AppPanel;
+
 import static java.lang.Thread.sleep;
 
 public class Agent implements Runnable {
@@ -56,8 +58,16 @@ public class Agent implements Runnable {
 
     public void move(int steps) {
         int[] diff = Heading.diff(heading);
-        this.x += diff[0] * steps;
-        this.y += diff[1] * steps;
+        x += diff[0] * steps;
+        y += diff[1] * steps;
+        if( x > AppPanel.FRAME_WIDTH )
+            x -= AppPanel.FRAME_WIDTH;
+        if( x < 0 )
+            x += AppPanel.FRAME_WIDTH;
+        if( y > AppPanel.FRAME_HEIGHT )
+            y -= AppPanel.FRAME_HEIGHT;
+        if( y < 0 )
+            y += AppPanel.FRAME_HEIGHT;
     }
 
     public int getY() {
