@@ -12,4 +12,6 @@ public abstract class Strategy
     public void setMyPrisoner(Prisoner p) { agent = p; }
 
     public abstract boolean cooperate();
+
+    public abstract char[] toChars();
 }

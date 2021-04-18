@@ -18,4 +18,6 @@ public class RandomStrategy extends Strategy
     }
 
     public String toString() { return "RandomStrategy"; }
+
+    public char[] toChars() { return new char[]{'R'};}
 }

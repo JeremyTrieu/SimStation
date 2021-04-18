@@ -14,4 +14,6 @@ public class NaiveStrategy extends Strategy
     }
 
     public String toString() { return "NaiveStrategy"; }
+
+    public char[] toChars() { return  new char[]{'N'};}
 }

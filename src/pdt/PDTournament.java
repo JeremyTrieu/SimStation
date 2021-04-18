@@ -116,6 +116,19 @@ public class PDTournament extends Simulation
         return new int[] {(totalN/naive), (totalE/evil), (totalR/random), (totalM/mimic)};
     }
 
+    public int[] getMinMax() {
+        int min = ((Prisoner)agents.get(0)).getFitness();
+        int max = min;
+        for(Agent a : agents) {
+            int fit = ((Prisoner)a).getFitness();
+            if(fit < min)
+                min=fit;
+            else if(fit > max)
+                max=fit;
+        }
+        return new int[]{min, max};
+    }
+
     public static void main(String[] args)
     {
         AppPanel panel = new SimPanel(new PDTFactory());

@@ -14,4 +14,6 @@ public class EvilStrategy extends Strategy
     }
 
     public String toString() { return "EvilStrategy"; }
+
+    public char[] toChars() { return  new char[]{'E'};}
 }

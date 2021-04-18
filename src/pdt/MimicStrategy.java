@@ -14,4 +14,6 @@ public class MimicStrategy extends Strategy
     }
 
     public String toString() { return "MimicStrategy"; }
+
+    public char[] toChars() { return  new char[]{'M'};}
 }
