@@ -3,7 +3,6 @@ package Boids;
 import mvc.*;
 import simStation.ControlCommand;
 import simStation.SimStationFactory;
-import simStation.SimView;
 import simStation.Simulation;
 
 public class BoidsFactory extends SimStationFactory
@@ -17,15 +16,16 @@ public class BoidsFactory extends SimStationFactory
 
     public String getTitle()
     {
-        return "BoidsSim";
+        return "Boids";
     }
 
     public String[] getHelp()
     {
-        return new String[] {"Click Start to begin the simulation."
-            + "Suspend will pause the simulation and resume will continue the simultion."
-            + "Click Stop the end the simulation."
-            + "Boids are agents that try to move similarly to their neighbours"};
+        return new String[] {super.getHelp()
+            + "Boids are agents that try to move similarly to their neighbours"
+            + "\nEach tick boids are modifying their speed and direction to be the average"
+            + "\nof their old value and the value of the randomly picked agent around them"
+        };
     }
 
     public String about()

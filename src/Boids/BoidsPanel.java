@@ -17,5 +17,4 @@ public class BoidsPanel extends SimPanel {
         AppPanel panel = new BoidsPanel(factory);
         panel.display();
     }
-
 }

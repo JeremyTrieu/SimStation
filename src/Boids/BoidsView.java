@@ -1,6 +1,7 @@
 package Boids;
 
 import mvc.AppPanel;
+import mvc.Model;
 import mvc.View;
 import simStation.Agent;
 import simStation.Heading;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class BoidsView extends View {
 
-    public BoidsView(Object model) {
+    public BoidsView(Model model) {
         super(model);
     }
 
@@ -56,11 +57,6 @@ public class BoidsView extends View {
             int x3 = x - (int)(5*(a.getXPart()+0.6));
             int y3 = y - (int)(5*(a.getYPart()+0.6));
             g2d.fillPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
-//            g2d.drawString(n,
-//                    Math.round(ix * tileSize),
-//                    Math.round(iy * tileSize) + tileSize
-//            );
-//            }
         }
     }
 }

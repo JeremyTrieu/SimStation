@@ -74,19 +74,14 @@ public class Simulation extends Model {
         Utilities.inform("#agents = " + getAgents().size()
             + "\nclock = " + getClock());
     }
-    public Agent getNeighbor(Agent a, int range) {
+    // return a neighbour agent in range; return a random neighbour if no agent is in range
+    public Agent getNeighbor(Agent a1, int range) {
         Agent flagAgent;
         ArrayList<Agent> inRange = new ArrayList<Agent>();
-        int ay = a.getY();
-        int ax = a.getX();
-        double dist = Math.sqrt((ay - agents.get(0).getY())*(ay - agents.get(0).getY()) +(ax - agents.get(0).getX())*(ax - agents.get(0).getX()));
-        for (int i = 0; i < agents.size(); i++) {
-            int iay =  agents.get(i).getY();
-            int iax =  agents.get(i).getX();
-            double newDist = Math.sqrt(Math.pow(ay - iay, 2) + Math.pow(ax - iax, 2));
-            if ( newDist < dist && agents.get(i)!=a ) {
-                dist = newDist;
-                inRange.add(agents.get(i));
+        for (Agent a2: agents) {
+            double newDist = dist(a1, a2);
+            if ( newDist < range && a2!=a1 ) {
+                inRange.add(a2);
             }
         }
         if (inRange.isEmpty())
@@ -94,6 +89,10 @@ public class Simulation extends Model {
         else
             flagAgent = inRange.get((int)(Math.random()*(inRange.size()-1)));
         return flagAgent;
+    }
+    public static double dist(Agent a1, Agent a2) {
+        return Math.sqrt(
+            Math.pow(a1.getX() - a2.getX(), 2) + Math.pow(a1.getY() - a2.getY(), 2));
     }
     public void populate() {
 
