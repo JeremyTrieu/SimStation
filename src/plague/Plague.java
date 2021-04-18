@@ -1,6 +1,5 @@
 package plague;
 
-import Boids.Boid;
 import mvc.AppPanel;
 import mvc.Utilities;
 import simStation.Agent;

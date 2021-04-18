@@ -95,7 +95,6 @@ public class Simulation extends Model {
             Math.pow(a1.getX() - a2.getX(), 2) + Math.pow(a1.getY() - a2.getY(), 2));
     }
     public void populate() {
-
     }
 }
 
