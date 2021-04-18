@@ -115,6 +115,19 @@ public class PDTournament extends Simulation
 
         return new int[] {(totalN/naive), (totalE/evil), (totalR/random), (totalM/mimic)};
     }
+    
+    public void stats()
+    {
+        int[] i = this.averages();
+        Utilities.inform("#agents = " + this.getAgents().size()
+                + "\nclock = " + this.getClock()
+                + "\n-------------------------------------"
+                + "\n        Average Fitnesses"
+                + "\nNaive Strategy:  " + i[0]
+                + "\nEvil Strategy:   " + i[1]
+                + "\nRandom Strategy: " + i[2]
+                + "\nMimic Strategy:  " + i[3]);
+    }
 
     public int[] getMinMax() {
         int min = ((Prisoner)agents.get(0)).getFitness();
