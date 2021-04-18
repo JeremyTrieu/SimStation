@@ -4,9 +4,11 @@ import simStation.*;
 import java.util.*;
 
 public class FlockingSimulation extends Simulation {
+  public static int MAXSPEED = 5;
+
   public void populate() {
-    int newSpeed = Utilities.rng.nextInt(5);
-    for (int i = 0; i < 15; i++) {
+    int newSpeed = Utilities.rng.nextInt(MAXSPEED);
+    for (int i = 0; i < 100; i++) {
       agents.add(new Bird(
               (int) (Math.random() * AppPanel.FRAME_WIDTH),
               (int) (Math.random() * AppPanel.FRAME_HEIGHT),
@@ -36,9 +38,16 @@ public class FlockingSimulation extends Simulation {
             map.put(tempKey, 1);
           }
       }
-      for (Map.Entry<Integer, Integer> e : map.entrySet()) {
-        temp.add("#birds @ speed " + e.getKey() + " = " + e.getValue() + "\n");
+      for (int i = 1; i < MAXSPEED + 1; i++)
+      {
+        int num = 0;
+        if (map.get(i) != null)
+        {
+            num = map.get(i);
+        }
+        temp.add("#birds @ speed " + i + " = " + num + "\n");
       }
+
       String[] tempStats = new String[temp.size()];
       tempStats[0] ="";
       for (int i = 0; i < tempStats.length; i++) {
