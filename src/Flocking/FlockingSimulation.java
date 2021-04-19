@@ -7,8 +7,8 @@ public class FlockingSimulation extends Simulation {
   public static int MAXSPEED = 5;
 
   public void populate() {
-    int newSpeed = Utilities.rng.nextInt(MAXSPEED);
     for (int i = 0; i < 100; i++) {
+      int newSpeed = Utilities.rng.nextInt(MAXSPEED-1) + 1;
       agents.add(new Bird(
               (int) (Math.random() * AppPanel.FRAME_WIDTH),
               (int) (Math.random() * AppPanel.FRAME_HEIGHT),
